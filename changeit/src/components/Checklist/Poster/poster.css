@@ -1,0 +1,14 @@
+.checklist__poster {
+    border-radius: 60px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 112px;
+    padding: 89px 151px 292px 81px;
+    text-align: left;
+    grid-template-columns: 1/2;
+    grid-row: 1/2;
+    background-image: url("../Poster/checklist-hand.png");
+    background-repeat: no-repeat;
+    background-position: bottom right 22%;
+  }

@@ -1,0 +1,114 @@
+.checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 80px;
+  }
+  
+
+  
+  .checklist__form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 60px;
+    padding: 49px 92px 39px 91px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    grid-template-columns: 2/3;
+    grid-row: 1/2;
+    font-family: 'Helvetica Now Display';
+  }
+    
+  .form__notice {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  
+  .form__button {
+    border: 0;
+    color: #ffffff;
+    border-radius: 60px;
+    background-color: #3943f5;
+    padding: 35px 0;
+    font-size: 20px;
+  }
+  
+  .form__button:hover {
+    background-color:#2f37cd ;
+  }
+    
+  .field-correct {
+    border-color: rgb(33, 255, 33);
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 11px;
+    margin: 0;
+  }
+
+  .alert {
+    color: red;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  
+  @media screen and (max-width: 1280px) {
+    .checklist__form {
+      padding: 40px;
+    }
+  
+    .checklist__poster {
+      padding: 80px;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .checklist {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .checklist__poster {
+      font-size: 50px;
+      line-height: normal;
+      padding: 40px;
+  
+      background-size: contain;
+    }
+  }
+  
+  @media screen and (max-width: 360px) {
+    .checklist__poster {
+      border-radius: 30px;
+      font-size: 40px;
+    }
+  
+    .checklist__form {
+      border-radius: 30px;
+    }
+  
+    .form__button {
+      border-radius: 30px;
+      font-size: 15px;
+      padding: 20px 0;
+    }
+  
+    .form__notice {
+      margin-bottom: 20px;
+    }
+  
+    .item__field {
+      border-radius: 20px;
+    }
+  
+    .checklist {
+      margin-bottom: 30px;
+    }
+  }
+  

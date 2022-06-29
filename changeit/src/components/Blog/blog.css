@@ -1,0 +1,14 @@
+.blog {
+  background-color: white;
+  padding: 50px 35px;
+  border-radius: 50px;
+  margin-bottom: 90px;
+}
+
+.blog-title {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}

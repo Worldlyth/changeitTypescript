@@ -1,0 +1,30 @@
+.stories__blog {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.blog__post {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 20px;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.post__title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 23px;
+}
+
+.post__text {
+  display: flex;
+}
+
+.post__creation-date {
+  font-size: 15px;
+  color: grey;
+}
