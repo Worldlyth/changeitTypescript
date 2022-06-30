@@ -4,10 +4,22 @@ import BlogForm from "./BlogForm/BlogForm"
 import BlogNavigation from "./BlogNavigation/BlogNavigation"
 import BlogPosts from "./BlogPosts/BlogPosts"
 
-export const Blog = () => {
-  const [posts, setPosts] = useState([])
-  const [filteredPosts, setFilteredsPosts] = useState([])
-  const [navigation, setNavigation] = useState({
+export interface post {
+  title: FormDataEntryValue
+  text: FormDataEntryValue
+  date: string
+  id: number
+}
+
+export interface navigation {
+  filter: string,
+  sorting: string,
+}
+
+export const Blog: React.FC = () => {
+  const [posts, setPosts] = useState<post[]>([])
+  const [filteredPosts, setFilteredsPosts] = useState<post[]>([])
+  const [navigation, setNavigation] = useState<navigation>({
     filter: "",
     sorting: "",
   })
@@ -23,14 +35,14 @@ export const Blog = () => {
     }
 
     for (let i = 0; i < localStorage.length; i++) {
-      let key = localStorage.key(i)
+      let key:string = localStorage.key(i)!
       let parsedItem = JSON.parse(key)
       if (
         parsedItem.filter === navigation.filter &&
         parsedItem.sorting === navigation.sorting &&
         parsedItem.key === filteredPosts.length
       ) {
-        posts = JSON.parse(localStorage.getItem(key))
+        posts = JSON.parse(localStorage.getItem(key)!)
         isContain = true
       }
     }

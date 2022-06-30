@@ -1,17 +1,23 @@
 import React from "react"
+import {post} from '../Blog' 
 import "./blogForm.css"
 
-const BlogForm = ({ posts, setPosts }) => {
-  const addPost = (e) => {
+interface BlogFormProps {
+  posts: post[],
+  setPosts: (value: post[]) => void
+}
+
+const BlogForm: React.FC<BlogFormProps> = ({ posts, setPosts }) => {
+  const addPost = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    const title = formData.get("title")
-    const text = formData.get("text")
+    const form:HTMLFormElement = e.currentTarget
+    const formData:FormData = new FormData(form)
+    const title:FormDataEntryValue = formData.get("title")!
+    const text:FormDataEntryValue = formData.get("text")!
 
     const newPost = {
-      title,
-      text,
+      title: title,
+      text: text,
       date: new Date().toLocaleString(),
       id: Date.now(),
     }
@@ -39,7 +45,7 @@ const BlogForm = ({ posts, setPosts }) => {
       <textarea
         placeholder="Your story"
         className="form__text"
-        rows="10"
+        rows={10}
         name="text"
         id="text"
       />

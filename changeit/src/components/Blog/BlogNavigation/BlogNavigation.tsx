@@ -1,10 +1,20 @@
-import React, { useEffect } from "react"
+import React, { SetStateAction, useEffect } from "react"
+import {post} from "../Blog"
+import { navigation } from "../Blog"
 import "./blogNavigation.css"
 
-const BlogNavigation = ({
+interface BlogNavigationProps {
+  posts: post[]
+  setPosts: (param1: post[], param2?: post[]) => void
+  navigation: navigation
+  setNavigation: (value: SetStateAction<navigation>) => void
+  setFilteredsPosts: (value: post[]) => void
+}
+
+const BlogNavigation: React.FC<BlogNavigationProps>= ({
   posts,
-  setPosts,
   navigation,
+  setPosts,
   setNavigation,
   setFilteredsPosts,
   
@@ -54,16 +64,16 @@ const BlogNavigation = ({
 
   useEffect(() => {
     const filteredPosts = posts.filter((post) =>
-      post.title.toLowerCase().includes(navigation.filter)
+      post.title.toString().toLowerCase().includes(navigation.filter)
     )
     setFilteredsPosts(filteredPosts)
   }, [navigation.filter, posts])
 
-  const handleSorting = (e) => {
+  const handleSorting = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setNavigation({ ...navigation, sorting: e.target.value })
   }
 
-  const handleFilter = (e) => {
+  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNavigation({ ...navigation, filter: e.target.value })
   }
 

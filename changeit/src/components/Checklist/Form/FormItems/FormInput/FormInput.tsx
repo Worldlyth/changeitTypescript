@@ -2,14 +2,27 @@ import React from "react"
 import "./formInput.css"
 import { useState } from "react"
 
-export const FormInput = ({ id, label, type, placeholder }) => {
-  const [field, setField] = useState({
+interface formField {
+  value: string,
+  style: string,
+  error: string
+}
+
+interface fieldProps {
+  id: string, 
+  label: string,
+  type: string,
+  placeholder: string
+}
+
+export const FormInput:React.FC<fieldProps> = ({ id, label, type, placeholder }) => {
+  const [field, setField] = useState<formField>({
     value: "",
     style: "item__field",
     error: "",
   })
 
-  function validate(e) {
+  function validate(e: React.ChangeEvent<HTMLInputElement>) {
     const fieldValue = e.target.value
 
     if (id === "firstName" || id === "lastName") {
@@ -21,7 +34,7 @@ export const FormInput = ({ id, label, type, placeholder }) => {
     }
   }
 
-  function validateNames(value) {
+  function validateNames(value: string) {
     const regCapitalized = /^[A-Z\s]*$/
     const regName = /^[a-zA-Z\s]*$/
 
@@ -38,7 +51,7 @@ export const FormInput = ({ id, label, type, placeholder }) => {
     }
   }
 
-  function validateEmail(value) {
+  function validateEmail(value: string) {
     const regEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
     if (!regEmail.test(value)) {
       setError(" matched to Email format")
@@ -47,11 +60,11 @@ export const FormInput = ({ id, label, type, placeholder }) => {
     }
   }
 
-  function validateDate(value) {
-    const fieldDate = Date.parse(value)
-    const regDate = /^\d{2}\.\d{2}\.\d{4}$/
-    const nowDate = new Date()
-    const timeStamp = Date.parse(nowDate)
+  function validateDate(value: string) {
+    const fieldDate:number = Date.parse(value)
+    const regDate:RegExp = /^\d{2}\.\d{2}\.\d{4}$/
+    const nowDate:any = new Date()
+    const timeStamp:number = Date.parse(nowDate)
 
     if (!regDate.test(value)) {
       setError(" matched to DD.MM.YYYY format")
@@ -62,7 +75,7 @@ export const FormInput = ({ id, label, type, placeholder }) => {
     }
   }
 
-  const setError = (message) => {
+  const setError = (message: string) => {
     setField(() => ({
       ...field,
       style: "field-error",
@@ -77,7 +90,7 @@ export const FormInput = ({ id, label, type, placeholder }) => {
     }))
   }
 
-  const fieldHandler = (e) => {
+  const fieldHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setField(() => ({ ...field, value: e.target.value }))
   }
 

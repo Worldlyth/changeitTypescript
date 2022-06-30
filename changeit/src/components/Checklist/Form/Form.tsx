@@ -2,31 +2,33 @@ import React from "react"
 import { useState } from "react"
 import { FormInput } from "./FormItems/FormInput/FormInput"
 import { FormSelect } from "./FormItems/FormSelect/FormSelect"
-export const Form = () => {
 
-const [alert, setAlert] = useState ('')
+export const Form: React.FC = () => {
+  const [alert, setAlert] = useState<string>("")
 
-  function checkValidity(e) {
-    const form = document.getElementById("checklistForm")
-    const inputs = form.getElementsByTagName('input')
+  function checkValidity(e: React.FormEvent<HTMLFormElement>) {
+    const form = document.getElementById("checklistForm")!
+    const inputs = form.getElementsByTagName("input")
     for (let input of inputs) {
-     if (!input.classList.contains('field-correct')) {
-      setAlert("*Please make sure the fields are filled and correct" )
-      e.preventDefault()
-     }
+      if (!input.classList.contains("field-correct")) {
+        setAlert("*Please make sure the fields are filled and correct")
+        e.preventDefault()
+      }
     }
   }
 
   return (
-    <form className="checklist__form bg_white" onSubmit={checkValidity} id="checklistForm">
+    <form
+      className="checklist__form bg_white"
+      onSubmit={checkValidity}
+      id="checklitForm"
+    >
       <FormInput
         type="text"
         placeholder="Enter your First Name"
         id="firstName"
         label="First Name"
       />
-
-
 
       <FormInput
         type="text"
@@ -42,10 +44,7 @@ const [alert, setAlert] = useState ('')
         label="Email"
       />
 
-      <FormSelect
-        label="Life Event"
-        id="lifeEvent"
-      />
+      <FormSelect label="Life Event" id="lifeEvent" />
 
       <FormInput
         type="text"
@@ -63,7 +62,9 @@ const [alert, setAlert] = useState ('')
         </span>
       </div>
       <div className="alert">{alert}</div>
-      <button type="submit" value="Download" className="form__button" >Download</button>
+      <button type="submit" value="Download" className="form__button">
+        Download
+      </button>
     </form>
   )
 }
